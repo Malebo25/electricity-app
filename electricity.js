@@ -17,6 +17,7 @@ function Electricity(availUnits,spent,bought) {
   };
 
   function topUpElectricity(amount) {
+    
     if (amount === 10) {
       unitsAvailable += 7;
       electricityUsage["R10"]++;
@@ -48,10 +49,11 @@ function Electricity(availUnits,spent,bought) {
    */
   function useAppliance(appliance) {
     if (unitsAvailable) {
-      
       if (unitsAvailable >= 10) {
-  
-        if (appliance === "Stove") {
+
+        if (appliance == "Stove") {
+            
+
           unitsAvailable -= appliances["Stove"];
           return true;
         }
@@ -61,6 +63,7 @@ function Electricity(availUnits,spent,bought) {
         
       }
       else if (unitsAvailable >= 13) {
+        
         
         if (appliance === "Fridge") {
           unitsAvailable -= appliances["Fridge"];
@@ -99,6 +102,7 @@ function Electricity(availUnits,spent,bought) {
   }
 
   function getUnitsAvailable() {
+    
     return unitsAvailable;
   }
   function advanceTaken() {
