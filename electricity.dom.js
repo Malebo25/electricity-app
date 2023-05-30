@@ -3,14 +3,21 @@ const radioBTN = document.querySelector(".topup");
 const buyBTN = document.querySelector(".topupNow");
 const availableUnits = document.querySelector(".unitsAvailable");
 const spentAmount = document.querySelector(".totalAmount");
+const unitsBought = document.querySelector(".totalUnits");
 
 // Factory Function instance
-const electricity = Electricity(Number(localStorage.getItem("UnitsNow")),Number(localStorage.getItem("SpentAmount")));
+const electricity = Electricity(Number(localStorage.getItem("UnitsNow")),Number(localStorage.getItem("SpentAmount")),Number(localStorage.getItem("unitsBought")));
+
 availableUnits.innerHTML = electricity.getUnitsAvailable();
 localStorage.getItem("UnitsNow");
 
 spentAmount.innerHTML = electricity.totalAmountSpent();
 localStorage.getItem("SpentAmount");
+
+unitsBought.innerHTML = electricity.totalUnitsBought();
+localStorage.getItem("unitsBought");
+
+
 // DOM events here
 buyBTN.addEventListener("click", function () {
   var checkedradioBtn = document.querySelector(
@@ -26,8 +33,11 @@ buyBTN.addEventListener("click", function () {
     electricity.topUpElectricity(Availamount);
     availableUnits.innerHTML = electricity.getUnitsAvailable();
   }
-  spentAmount.innerHTML = electricity.totalAmountSpent();
+   spentAmount.innerHTML = electricity.totalAmountSpent();
+   unitsBought.innerHTML = electricity.totalUnitsBought();
 
   localStorage.setItem("UnitsNow", Number(electricity.getUnitsAvailable()));
-  localStorage.setItem("SpentAmount", Number(electricity.totalAmountSpent()));
+   localStorage.setItem("SpentAmount", Number(electricity.totalAmountSpent()));
+   localStorage.setItem("unitsBought", Number(electricity.totalUnitsBought()));
+   
 });
